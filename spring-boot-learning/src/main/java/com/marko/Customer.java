@@ -1,4 +1,4 @@
-package com.marko;
+/*package com.marko;
 
 import jakarta.persistence.*;
 
@@ -91,3 +91,4 @@ public class Customer {
                 '}';
     }
 }
+*/

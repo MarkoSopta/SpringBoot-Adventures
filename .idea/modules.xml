@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/sb.iml" filepath="$PROJECT_DIR$/.idea/sb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-learning/security.iml" filepath="$PROJECT_DIR$/spring-boot-learning/security.iml" />
     </modules>
   </component>
 </project>
