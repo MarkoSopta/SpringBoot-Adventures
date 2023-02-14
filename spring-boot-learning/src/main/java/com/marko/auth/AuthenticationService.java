@@ -10,6 +10,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/*
+ * This class is responsible for user authentication and registration. It contains two methods, register() and authenticate(). 
+ * The register() method takes a RegisterRequest object as an argument and creates a new User object based on the information provided in the request. 
+ * It then saves the user to the repository and generates a JWT token for authentication. 
+ * The authenticate() method takes an AuthenticationRequest object as an argument and authenticates the user with the provided email and password. 
+ * If successful, it retrieves the user from the repository and generates a JWT token for authentication.
+*/
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {

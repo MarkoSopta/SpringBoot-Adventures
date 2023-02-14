@@ -10,6 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+/*
+ * This is a Java configuration class for setting up Spring Security. 
+ * It imports the Jakarta Servlet Filter, Lombok's RequiredArgsConstructor, and several Spring Security classes. 
+ * The @Configuration and @EnableWebSecurity annotations indicate that this is a configuration class for web security. 
+ * The class has two fields: jwtAuthFilter and authenticationProvider. The securityFilterChain() method configures the HttpSecurity object to disable CSRF, 
+ * permit all requests to /api/v1/auth/, require authentication for all other requests, set session creation policy to stateless, 
+ * and add the jwtAuthFilter before the UsernamePasswordAuthenticationFilter.
+ */
+
 
 @Configuration
 @EnableWebSecurity

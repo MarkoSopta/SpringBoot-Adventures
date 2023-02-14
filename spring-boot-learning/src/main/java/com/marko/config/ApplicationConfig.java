@@ -12,7 +12,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+/*
+This is a Java configuration class for the Spring Security framework. 
+The @Configuration annotation indicates that this class contains bean definitions for the application context. 
+The @RequiredArgsConstructor annotation generates a constructor with required parameters. 
+The userDetailsService() method creates an instance of UserDetailsService, which is used to look up user information from the repository. 
+The authenticationProvider() method creates an instance of DaoAuthenticationProvider, which is used to authenticate users with their credentials. 
+The authenticationManager() method creates an instance of AuthenticationManager, which is used to manage authentication requests. 
+Finally, the passwordEncoder() method creates an instance of BCryptPasswordEncoder, which is used to encode passwords for storage in the repository.
+*/
 
 @Configuration
 @RequiredArgsConstructor

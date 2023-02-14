@@ -17,6 +17,15 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
+/*
+ * This is a Java class that is used to authenticate a user. 
+ * It extends the OncePerRequestFilter class, which ensures that the filter is only executed once per request. 
+ * The class has two private fields: jwtService and userDetailsService. 
+ * The doFilterInternal() method is overridden to check for a valid JWT token in the Authorization header of the request. 
+ * If a valid token is found, it extracts the username from it and uses the userDetailsService to load the UserDetails object associated with that username. 
+ * If the token is valid, it creates an authentication token and updates the SecurityContextHolder with it before sending the request to DispatcherServlet.
+*/
+
 @Service
 public class JwtService {
 
