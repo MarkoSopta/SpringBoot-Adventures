@@ -33,21 +33,35 @@ public class MongodbApplication {
 				LocalDateTime.now()
 				);
 
+			// usingMongoTemplateAndQuery(repository, mongoTemplate, student);
+
+
+			// better way to add a custom query
+			repository.findStudentByEmail("gmail@gmail.com")
+					  .ifPresentOrElse(s -> {
+						  System.out.println("student already exists");
+			},()->{
+						  System.out.println("inserting");
+						  repository.insert(student);
+					  });
+		};
+	}
+
+	/*
+	private static void usingMongoTemplateAndQuery(StudentRepository repository, MongoTemplate mongoTemplate, Student student) {
 		Query query =new Query();
 		query.addCriteria(Criteria.where("email").is("gmail@gmail.com"));
 		List<Student> students= mongoTemplate.find(query, Student.class);
 
-			if(students.size()>1){
-				throw new IllegalStateException("Found many students with the same email");
-			}
+		if(students.size()>1){
+			throw new IllegalStateException("Found many students with the same email");
+		}
 
-			if(students.isEmpty()){
-				System.out.println("inserting");
-				repository.insert(student);
-			}else {
-				System.out.println("student already exists");
-			}
-
-		};
-	}
+		if(students.isEmpty()){
+			System.out.println("inserting");
+			repository.insert(student);
+		}else {
+			System.out.println("student already exists");
+		}
+	}*/
 }
