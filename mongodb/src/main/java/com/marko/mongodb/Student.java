@@ -2,8 +2,10 @@ package com.marko.mongodb;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -14,10 +16,31 @@ public class Student {
     private String id;
     private String firstname;
     private String lastname;
+    @Indexed(unique = true)
     private String email;
     private Gender gender;
     private Address address;
     private List<String> favSubs;
     private BigDecimal totalSpentInBooks;
-    private ZonedDateTime created;
+    private LocalDateTime created;
+
+
+    //  no id constructor
+    public Student(String firstname,
+                   String lastname,
+                   String email,
+                   Gender gender,
+                   Address address,
+                   List<String> favSubs,
+                   BigDecimal totalSpentInBooks,
+                   LocalDateTime created) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.gender = gender;
+        this.address = address;
+        this.favSubs = favSubs;
+        this.totalSpentInBooks = totalSpentInBooks;
+        this.created = created;
+    }
 }
