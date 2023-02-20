@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9b61cb-3607-47e7-9f6a-bb253d8d5654" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../Java-Basics/Java-Basics.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
