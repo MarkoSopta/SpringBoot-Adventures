@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a9b61cb-3607-47e7-9f6a-bb253d8d5654" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Java-Basics/Java-Basics.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/mongodb/src/main/java/com/marko/mongodb/Student.java" afterDir="false" />
-    </list>
+    <list default="true" id="6a9b61cb-3607-47e7-9f6a-bb253d8d5654" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +20,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
