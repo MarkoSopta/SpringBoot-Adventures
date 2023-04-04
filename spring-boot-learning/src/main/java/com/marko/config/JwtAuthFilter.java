@@ -1,5 +1,6 @@
 package com.marko.config;
 
+import com.marko.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import java.io.IOException;
 
 /*
@@ -28,8 +30,9 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    private final JwtService jwtService ;
+    private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+    private final TokenRepository tokenRepository;
 
 
     @Override
@@ -37,20 +40,23 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain) throws ServletException, IOException {
         //check jwt token
-        final String authHeader= request.getHeader("Authorization");
+        final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
-        if(authHeader==null||!authHeader.startsWith("Bearer ")){
-            filterChain.doFilter(request,response);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(7);
         // if SecurityContextHolder is null the user in not authenticated
-        userEmail =jwtService.extractUsername(jwt);
-        if(userEmail!=null && SecurityContextHolder.getContext().getAuthentication()==null){
-            UserDetails userDetails =this.userDetailsService.loadUserByUsername(userEmail);
+        userEmail = jwtService.extractUsername(jwt);
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            var isTokenValid = tokenRepository.findByToken(jwt)
+                    .map(t -> !t.isExpired() && !t.isRevoked())
+                    .orElse(false);
             // if token is valid update SecurityContextHolder and send request to DispatcherServlet
-            if(jwtService.isTokenValid(jwt,userDetails)){
+            if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
@@ -64,6 +70,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 }
