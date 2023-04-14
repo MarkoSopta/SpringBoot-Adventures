@@ -20,7 +20,7 @@ public class ProductService {
     private final ProductRepository repo;
 
     public String saveProduct(SaveProductDTO saveProductDTO) {
-        Product product = new Product(saveProductDTO.name(), saveProductDTO.description());
+        Product product = new Product(saveProductDTO.name(), saveProductDTO.description(),saveProductDTO.tags(),saveProductDTO.category());
         Product savedProduct = repo.save(product);
         return savedProduct.getId();
     }

@@ -1,6 +1,8 @@
 package com.marko.mongodb;
 
+import com.marko.mongodb.Model.Category;
 import com.marko.mongodb.Model.Product;
+import com.marko.mongodb.Repository.CategoryRepository;
 import com.marko.mongodb.Repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +25,8 @@ public class MongodbApplication {
 
     @Bean
     public CommandLineRunner clr(
-        ProductRepository prepo
+        ProductRepository prepo,
+        CategoryRepository crepo
     ) {
         return args -> {
             var product = Product.builder()
@@ -31,6 +34,11 @@ public class MongodbApplication {
                     .description("TestDesc1")
                     .build();
             prepo.insert(product);
+            var category = Category.builder()
+                    .name("TestCategory")
+                    .description("TestCategory")
+                    .build();
+            crepo.insert(category);
         };
     }
 
