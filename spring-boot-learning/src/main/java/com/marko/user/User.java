@@ -19,7 +19,7 @@ import java.util.SimpleTimeZone;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="_user")
+@Table(name = "_user")
 public class User implements UserDetails {
 
     @Id
@@ -30,15 +30,14 @@ public class User implements UserDetails {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private  Role role;
+    private Role role;
     @OneToMany(mappedBy = "user")
-    private List<Token>tokens;
-
+    private List<Token> tokens;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return role.getUserAuthorities();
     }
 
     @Override
